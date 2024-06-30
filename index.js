@@ -7,11 +7,11 @@ export const rehypeTextmarker = (options) => {
     }
     return (tree) => {
         visit(tree, (node) => node.tagName == 'code' || node.tagName == 'p', (node) => {
-            findAndReplace(node, [/≈([^≈]+)≈/, (value, capture, match) => {
+            findAndReplace(node, [options.textPattern, (value, capture, match) => {
                 const markNode = {
                     type: 'element',
-                    tagName: 'mark',
-                    properties: { className: 'yellow-mark' },
+                    tagName: options.htmlTag,
+                    properties: { className: options.className },
                     children: [ { type: 'text', value: capture } ]
                 }
                 return markNode
