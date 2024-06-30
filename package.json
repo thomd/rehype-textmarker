@@ -1,0 +1,27 @@
+{
+  "name": "rehype-textmarker",
+  "version": "0.1.0",
+  "description": "rehype-plugin to enclode text pattern with a mark-tag for text highlighting",
+  "keywords": [
+    "rehype-plugin",
+    "rehype",
+    "html"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2"
+  },
+  "files": [
+    "index.js"
+  ],
+  "author": "Thomas Dürr <thomduerr@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomd/rehype-textmarker.git"
+  },
+  "bugs": "https://github.com/thomd/rehype-textmarker/issues"
+}
