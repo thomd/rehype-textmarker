@@ -1,6 +1,6 @@
 # rehype-textmarker
 
-`rehype-textmarker` is a [rehype][rehype] plugin to highlight text pattern like e.g. `TODO` or `FIXME` or to highlight text surrounded by a defined symbol, e.g. `this is ~~highlingted~~ text` by enclosing the pattern text or the surrounded text with a `<mark>` tag. See below example.
+`rehype-textmarker` is a [rehype][rehype] plugin to highlight text pattern like e.g. `TODO` or `FIXME` or to highlight text surrounded by a defined symbol, e.g. `this is ≈highlingted≈ text` by enclosing the pattern text or the surrounded text with a `<mark>` tag. See below example.
 
 ## Usage
 
