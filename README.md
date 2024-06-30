@@ -13,20 +13,18 @@ import { read } from 'to-vfile'
 
 const file = await remark()
     .use(remarkRehype)
-    .use(rehypeTextmarker, {
-        textPattern: /\b(TODO)\b/,
-        htmlTag: 'mark',
-        className: 'red-marker'
-    })
-    .use(rehypeTextmarker, {
-        textPattern: /≈([^≈]+)≈/,
-        htmlTag: 'mark',
-        className: 'yellow-marker'
-    })
-    .use(rehypeTextmarker, {
-        textPattern: /\b[([^\]]+)\]\b/,
-        htmlTag: 'kbd'
-    })
+    .use(rehypeTextmarker, [
+        {
+            textPattern: /\b(TODO)\b/,
+            htmlTag: 'mark',
+            className: 'red-marker',
+        },
+        {
+            textPattern: /≈([^≈]+)≈/,
+            htmlTag: 'mark',
+            className: 'yellow-marker',
+        }
+    ])
     .use(rehypeStringify)
     .process(await read('example.md'))
 
@@ -34,4 +32,3 @@ console.log(file.value)
 ```
 
 [rehype]: https://github.com/rehypejs/rehype
-
