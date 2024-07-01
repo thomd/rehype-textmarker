@@ -2,7 +2,7 @@
 
 ![Build][build-badge]
 
-`rehype-textmarker` is a [rehype][rehype] plugin to highlight text pattern like e.g. `TODO`, `FIXME` or to highlight text surrounded by a defined symbol, e.g. `this is ≈highlighted≈ text` by enclosing the text with a `<mark>` tag. 
+`rehype-textmarker` is a [rehype][rehype] plugin to highlight text pattern like e.g. `TODO`, `FIXME` or to highlight text surrounded by a defined symbol, e.g. `this is ≈highlighted≈ text` by enclosing the text with a `<mark>` tag.
 
 See below example.
 
@@ -33,12 +33,13 @@ const file = await remark()
   .use(remarkRehype)
   .use(rehypeTextmarker, [
     {
-      textPattern: /\b(TODO)\b/,
-      className: 'red-marker',
-    },
-    {
       textPattern: /≈([^≈]+)≈/g,
       className: 'yellow-marker',
+      tags: ['p', 'code'],
+    },
+    {
+      textPattern: /\b(TODO)\b/,
+      className: 'red-marker',
     },
   ])
   .use(rehypeStringify)
@@ -73,7 +74,9 @@ A list of options `[options, ...]` is mandatory. See example above.
 
 - `htmlTag` (`string`, optional) — HTML tag to sourround the captured string. Default is a `mark` tag.
 
-- `className` (`string`, optional) — style class to be added to the html tag.
+- `className` (`string`, optional) — style class to be added to the html tag. Default is no CSS class.
+
+- `tags` (`array` of `string`, optional) — list of tags within whose text is replaced. Default is `p` tag.
 
 [rehype]: https://github.com/rehypejs/rehype
 [build-badge]: https://github.com/thomd/rehype-textmarker/workflows/plugin-test/badge.svg

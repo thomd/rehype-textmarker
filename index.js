@@ -7,11 +7,13 @@ const rehypeTextmarker = (options) => {
       options = [options]
     }
     return (tree) => {
-      visit(
-        tree,
-        (node) => node.tagName == 'code' || node.tagName == 'p',
-        (node) => {
-          for (let option of options) {
+      for (let option of options) {
+        visit(
+          tree,
+          (node) => {
+            return option.tags ? option.tags.includes(node.tagName) : node.tagName == 'p'
+          },
+          (node) => {
             findAndReplace(node, [
               option.textPattern,
               (value, capture, match) => {
@@ -25,8 +27,8 @@ const rehypeTextmarker = (options) => {
               },
             ])
           }
-        }
-      )
+        )
+      }
     }
   }
 }
