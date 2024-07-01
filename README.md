@@ -1,5 +1,7 @@
 # rehype-textmarker
 
+![Build][build-badge]
+
 `rehype-textmarker` is a [rehype][rehype] plugin to highlight text pattern like e.g. `TODO` or `FIXME` or to highlight text surrounded by a defined symbol, e.g. `this is ≈highlingted≈ text` by enclosing the pattern text or the surrounded text with a `<mark>` tag. See below example.
 
 ## Usage
@@ -60,7 +62,7 @@ In order to define multiple regular expressions, put options into a list.
 
 ```js
 unified().use(rehypeTextmarker, {...})
-unified().use(rehypeTextmarker, [{...}, {...}])
+unified().use(rehypeTextmarker, [{...}, {...}, ...])
 ```
 
 A list of options `[options, ...]` is mandatory. See example above.
@@ -72,3 +74,4 @@ A list of options `[options, ...]` is mandatory. See example above.
 - `className` (`string`, optional) — style class to be added to the html tag.
 
 [rehype]: https://github.com/rehypejs/rehype
+[build-badge]: https://github.com/thomd/rehype-textmarker/workflows/plugin-test/badge.svg
