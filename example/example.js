@@ -8,7 +8,7 @@ const file = await remark()
   .use(remarkRehype)
   .use(rehypeTextmarker, [
     {
-      textPattern: /≈([^≈]+)≈/,
+      textPattern: /≈([^≈]+)≈/g,
       htmlTag: 'mark',
       className: 'yellow-marker',
     },
