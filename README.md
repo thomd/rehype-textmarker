@@ -68,13 +68,11 @@ unified().use(rehypeTextmarker, {...})
 unified().use(rehypeTextmarker, [ {...}, {...}, ... ] )
 ```
 
-A list of options `[options, ...]` is mandatory. See example above.
-
 - `textPattern` (`RegExp`, mandatory) — regular expression which must contain a capturing group.
 
 - `htmlTag` (`string`, optional) — HTML tag to sourround the captured string. Default is a `mark` tag.
 
-- `className` (`string`, optional) — style class to be added to the html tag. Default is no CSS class.
+- `className` (`string`, optional) — style class to be added to the html tag. Default is no style-class.
 
 - `tags` (`array` of `string`, optional) — list of tags within whose text is replaced. Default is `p` tag.
 
