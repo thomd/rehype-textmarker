@@ -54,14 +54,6 @@ then running `node example.js` yields:
 <p><mark class="red-marker">TODO</mark> things to do later</p>
 ```
 
-## API
-
-The default export is `rehypeTextmarker`.
-
-```js
-unified().use(rehypeTextmarker, options)
-```
-
 ### Options
 
 In order to define multiple regular expressions, put options into a list.
