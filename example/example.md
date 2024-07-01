@@ -1,10 +1,7 @@
-# headline
+# Headline
 
-text with ≈yellow≈ textmarker ≈here≈ and ≈there≈.
+Paragraph with ≈highlighted≈ text.
 
-This is `inlined ≈code≈ which is a ≈large≈ line` with ≈highlighted≈ code.
+Inline code `console.≈log≈();`.
 
-```
-console.≈log≈();
-print(≈foobar≈);
-```
+TODO things to do later

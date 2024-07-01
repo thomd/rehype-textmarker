@@ -4,6 +4,20 @@
 
 ## Usage
 
+Say we have the following file `example.md`:
+
+```markdown
+# Headline
+
+Paragraph with ≈highlighted≈ text.
+
+Inline code `console.≈log≈();`.
+
+TODO things to do later
+```
+
+and a module `example.js`:
+
 ```js
 import { remark } from 'remark'
 import remarkRehype from 'remark-rehype'
@@ -27,6 +41,17 @@ const file = await remark()
   .process(await read('example.md'))
 
 console.log(file.value)
+```
+
+then running `node example.js` yields:
+
+```html
+<h1>Headline</h1>
+<p>Paragraph with <mark class="yellow-marker">highlighted</mark> text.</p>
+<p>
+  Inline code <code>console.<mark class="yellow-marker">log</mark>();</code>.
+</p>
+<p><mark class="red-marker">TODO</mark> things to do later</p>
 ```
 
 ## API

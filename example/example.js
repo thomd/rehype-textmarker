@@ -7,11 +7,8 @@ import { read } from 'to-vfile'
 const file = await remark()
   .use(remarkRehype)
   .use(rehypeTextmarker, [
-    {
-      textPattern: /≈([^≈]+)≈/g,
-      htmlTag: 'mark',
-      className: 'yellow-marker',
-    },
+    { textPattern: /≈([^≈]+)≈/g, className: 'yellow-marker' },
+    { textPattern: /\b(TODO)\b/, className: 'red-marker' },
   ])
   .use(rehypeStringify)
   .process(await read('example.md'))
