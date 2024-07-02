@@ -59,22 +59,34 @@ then running `node example.js` yields:
 <p><mark class="red-marker">TODO</mark> things to do later</p>
 ```
 
-### Options
+## API
 
-In order to define multiple regular expressions, put options into a list.
+The default export is `rehypeTextmarker`.
 
 ```js
-unified().use(rehypeTextmarker, {...})
-unified().use(rehypeTextmarker, [ {...}, {...}, ... ] )
+unified().use(rehypeTextmarker, options)
 ```
 
-- `textPattern` (`RegExp`, mandatory) — regular expression which must contain a capturing group.
+### Options
+
+In order to define **multiple** regular expressions, put options into a list.
+
+```js
+unified().use(rehypeTextmarker, options)
+unified().use(rehypeTextmarker, [options_1, options_2, ... ])
+```
+
+where `options` is an object with at least a `textPattern` property.
+
+The follwoing options are available:
+
+- `textPattern` (`RegExp`, mandatory) — regular expression which must contain a **capturing group**.
 
 - `htmlTag` (`string`, optional) — HTML tag to sourround the captured string. Default is a `mark` tag.
 
-- `className` (`string`, optional) — style class to be added to the html tag. Default is no style-class.
+- `className` (`string`, optional) — style class to be added to the html tag. Default is no style class.
 
-- `tags` (`array` of `string`, optional) — list of tags within whose text is replaced. Default is `p` tag.
+- `tags` (`array` of `string`, optional) — list of tags within whose text is highlighted. Default is `p` tag.
 
 [rehype]: https://github.com/rehypejs/rehype
 [build-badge]: https://github.com/thomd/rehype-textmarker/workflows/plugin-test/badge.svg
