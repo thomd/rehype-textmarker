@@ -15,7 +15,6 @@ const file = await remark()
   .use(rehypeDocument)
   .use(rehypeFormat, { indent: '\t' })
   .use(rehypeStringify)
-  //.process(await read('example.md'))
-  .process(await read('../test/fixtures/oneOption/input.md'))
+  .process(await read('example.md'))
 
 console.log(file.value)
