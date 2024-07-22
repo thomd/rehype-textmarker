@@ -11,7 +11,8 @@ const rehypeTextmarker = (options) => {
             visit(
                tree,
                (node) => {
-                  const tags = node.properties?.className ? node.properties?.className.map((cls) => `${node.tagName}.${cls}`) : []
+                  const className = node.properties?.className
+                  const tags = className && Array.isArray(className) ? className.map((cls) => `${node.tagName}.${cls}`) : []
                   return option.tags ? option.tags.some((tag) => [node.tagName, ...tags].includes(tag)) : node.tagName == 'p'
                },
                (node) => {
