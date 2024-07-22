@@ -11,7 +11,8 @@ const rehypeTextmarker = (options) => {
             visit(
                tree,
                (node) => {
-                  return option.tags ? option.tags.includes(node.tagName) : node.tagName == 'p'
+                  const tags = node.properties?.className ? node.properties?.className.map((cls) => `${node.tagName}.${cls}`) : []
+                  return option.tags ? option.tags.some((tag) => [node.tagName, ...tags].includes(tag)) : node.tagName == 'p'
                },
                (node) => {
                   findAndReplace(node, [
@@ -20,7 +21,7 @@ const rehypeTextmarker = (options) => {
                         const markNode = {
                            type: 'element',
                            tagName: option.htmlTag != null ? option.htmlTag : 'mark',
-                           properties: option.className != null ? { className: option.className } : {},
+                           properties: option.className != null ? { className: [option.className] } : {},
                            children: [{ type: 'text', value: capture }],
                         }
                         return markNode

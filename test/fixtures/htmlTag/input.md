@@ -8,3 +8,9 @@ paragraph with highlighted inline code `var ≈foo≈ = "bar";`.
 var ≈foo≈ = "bar";
 console.log(≈foo≈);
 ```
+
+```css
+body {
+   ≈color≈: red;
+}
+```
