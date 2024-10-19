@@ -59,6 +59,10 @@ then running `node example.js` yields:
 <p><mark class="red-marker">TODO</mark> things to do later</p>
 ```
 
+## Test
+
+    npm run test
+
 ## API
 
 The default export is `rehypeTextmarker`.
