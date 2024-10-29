@@ -82,7 +82,7 @@ unified().use(rehypeTextmarker, [options_1, options_2, ... ])
 
 where `options` is an object with at least a `textPattern` property.
 
-The follwoing options are available:
+The following options are available:
 
 - `textPattern` (`RegExp`, mandatory) — regular expression which must contain a **capturing group**.
 
