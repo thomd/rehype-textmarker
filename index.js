@@ -1,5 +1,5 @@
 import { visit } from 'unist-util-visit'
-import { findAndReplace } from 'hast-util-find-and-replace'
+import { findAndReplace, defaultIgnore } from 'hast-util-find-and-replace'
 
 const rehypeTextmarker = (options) => {
    if (options !== null) {
@@ -16,18 +16,22 @@ const rehypeTextmarker = (options) => {
                   return option.tags ? option.tags.some((tag) => [node.tagName, ...tags].includes(tag)) : node.tagName == 'p'
                },
                (node) => {
-                  findAndReplace(node, [
-                     option.textPattern,
-                     (value, capture, match) => {
-                        const markNode = {
-                           type: 'element',
-                           tagName: option.htmlTag != null ? option.htmlTag : 'mark',
-                           properties: option.className != null ? { className: [option.className] } : {},
-                           children: [{ type: 'text', value: capture }],
-                        }
-                        return markNode
-                     },
-                  ])
+                  findAndReplace(
+                     node,
+                     [
+                        option.textPattern,
+                        (value, capture, match) => {
+                           const markNode = {
+                              type: 'element',
+                              tagName: option.htmlTag != null ? option.htmlTag : 'mark',
+                              properties: option.className != null ? { className: [option.className] } : {},
+                              children: [{ type: 'text', value: capture }],
+                           }
+                           return markNode
+                        },
+                     ],
+                     { ignore: defaultIgnore.concat(option.ignore ? option.ignore : []) }
+                  )
                }
             )
          }

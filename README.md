@@ -92,5 +92,7 @@ The following options are available:
 
 - `tags` (`array` of `string`, optional) — list of tags within whose text is highlighted. It is also possible to define tags with class names, e.g. `code.language-js`  which will only highlight wihtin Javascript code blocks . Default is `p` tag.
 
+- `ignore` (`array` of `string`, optional) — list of tags to ignore. Default is `[]`.
+
 [rehype]: https://github.com/rehypejs/rehype
 [build-badge]: https://github.com/thomd/rehype-textmarker/workflows/plugin-test/badge.svg
