@@ -1,6 +1,6 @@
 {
   "name": "@thomd/rehype-textmarker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "rehype-plugin to enclode text pattern with a mark-tag for text highlighting",
   "keywords": [
     "rehype-plugin",
