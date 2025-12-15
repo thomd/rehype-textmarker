@@ -61,7 +61,7 @@ then running `node example.js` yields:
 
 ## Test
 
-    npm run test
+    pnpm run test
 
 ## API
 
@@ -90,9 +90,9 @@ The following options are available:
 
 - `className` (`string`, optional) — style class to be added to the html tag. Default is no style class.
 
-- `tags` (`array` of `string`, optional) — list of tags within whose text is highlighted. It is also possible to define tags with class names, e.g. `code.language-js`  which will only highlight wihtin Javascript code blocks . Default is `p` tag.
+- `tags` (`array` of `string`, optional) — list of tags within whose text is highlighted. It is also possible to define tags with class names, e.g. `code.language-js` which will only highlight wihtin Javascript code blocks . Default is `p` tag.
 
-- `ignore` (`array` of `string`, optional) — list of tags to ignore. Default is `[]`.
+- `ignore` (`array` of `string`, optional) — list of tags or tags with class names to ignore. Default is `[]`.
 
 [rehype]: https://github.com/rehypejs/rehype
 [build-badge]: https://github.com/thomd/rehype-textmarker/workflows/plugin-test/badge.svg

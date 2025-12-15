@@ -8,29 +8,38 @@ const rehypeTextmarker = (options) => {
       }
       return (tree) => {
          for (let option of options) {
+            const ignoreSelectors = option.ignore ?? []
+            const ignoreFn = (node) => {
+               return ignoreSelectors.some((selector) => {
+                  if (selector.includes('.')) {
+                     const [tag, cls] = selector.split('.')
+                     return node.tagName === tag && Array.isArray(node.properties?.className) && node.properties.className.includes(cls)
+                  }
+                  return node.tagName === selector
+               })
+            }
             visit(
                tree,
                (node) => {
                   const className = node.properties?.className
                   const tags = className && Array.isArray(className) ? className.map((cls) => `${node.tagName}.${cls}`) : []
-                  return option.tags ? option.tags.some((tag) => [node.tagName, ...tags].includes(tag)) : node.tagName == 'p'
+                  return option.tags ? option.tags.some((tag) => [node.tagName, ...tags].includes(tag)) : node.tagName === 'p'
                },
                (node) => {
                   findAndReplace(
                      node,
                      [
                         option.textPattern,
-                        (value, capture, match) => {
-                           const markNode = {
-                              type: 'element',
-                              tagName: option.htmlTag != null ? option.htmlTag : 'mark',
-                              properties: option.className != null ? { className: [option.className] } : {},
-                              children: [{ type: 'text', value: capture }],
-                           }
-                           return markNode
-                        },
+                        (value, capture) => ({
+                           type: 'element',
+                           tagName: option.htmlTag ?? 'mark',
+                           properties: option.className ? { className: [option.className] } : {},
+                           children: [{ type: 'text', value: capture }],
+                        }),
                      ],
-                     { ignore: defaultIgnore.concat(option.ignore ? option.ignore : []) }
+                     {
+                        ignore: [...defaultIgnore, ignoreFn],
+                     }
                   )
                }
             )
@@ -38,4 +47,5 @@ const rehypeTextmarker = (options) => {
       }
    }
 }
+
 export default rehypeTextmarker
